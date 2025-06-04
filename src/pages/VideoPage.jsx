@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useParams } from "react-router";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 
 function timeSince(publishedAtISO) {
   const now = new Date();
@@ -168,6 +169,7 @@ export default function VideoPage() {
   return (
     <>
       <main className="text-white bg-black min-h-screen">
+      <Navbar />
         <section className="m-8">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] gap-6">
             <div className="space-y-6">
@@ -290,8 +292,8 @@ export default function VideoPage() {
 
                 <div className="flex items-start space-x-4">
                   <img
-                    src="https://i.pravatar.cc/40?img=5"
-                    alt="Your Avatar"
+                    src="https://cdn-icons-png.flaticon.com/512/1144/1144709.png"
+                    alt="Avatar"
                     className="w-10 h-10 rounded-full"
                   />
                   <div className="flex-1">
@@ -311,9 +313,7 @@ export default function VideoPage() {
                       rows="2"
                     />
                     <div className="flex items-center justify-end space-x-2 mt-2">
-                      <button className="px-4 py-2 text-gray-400 hover:text-white transition-colors">
-                        Cancel
-                      </button>
+                      
                       <button
                         onClick={addComment}
                         className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"

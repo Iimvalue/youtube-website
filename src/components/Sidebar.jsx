@@ -9,7 +9,6 @@ import {
   Radio,
   Gamepad2,
   Trophy,
-  UserPlus,
 } from "lucide-react";
 
 export default function Sidebar({ isCollapsed }) {
@@ -78,11 +77,6 @@ export default function Sidebar({ isCollapsed }) {
       </div>
     </div>
   );
-
-  const SectionTitle = ({ children }) =>
-    !isCollapsed && (
-      <h3 className="text-white text-base font-medium px-3 py-2">{children}</h3>
-    );
 
   const Divider = () =>
     !isCollapsed && <div className="border-t border-neutral-700 my-3"></div>;

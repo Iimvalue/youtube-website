@@ -5,7 +5,6 @@ export default function VideoCard({
   duration,
   title,
   channelName,
-  isVerified = false,
   views,
   uploadTime,
   videoId,
@@ -38,9 +37,7 @@ export default function VideoCard({
             <span className="text-neutral-400 text-xs hover:text-white cursor-pointer">
               {channelName}
             </span>
-            {isVerified && (
-              <CheckCircle size={12} className="text-neutral-400" />
-            )}
+           
           </div>
 
           <div className="flex items-center gap-1 text-neutral-400 text-xs">
