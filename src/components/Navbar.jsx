@@ -19,7 +19,6 @@ import { Link } from "react-router";
 export default function Navbar({ onMenuClick }) {
   return (
     <nav className="bg-neutral-900 text-white px-4 py-2 flex items-center justify-between">
-      {/* Left section - Menu and Logo */}
       <div className="flex items-center space-x-4">
         <button
           onClick={onMenuClick}
@@ -74,7 +73,6 @@ export default function Navbar({ onMenuClick }) {
         </div>
       </div>
 
-      {/* Center section - Search */}
       <div className="flex items-center flex-1 max-w-2xl mx-8">
         <div className="flex items-center w-full">
           <div className="flex-1 flex">
@@ -93,7 +91,6 @@ export default function Navbar({ onMenuClick }) {
         </div>
       </div>
 
-      {/* Right section - Icons and Profile */}
       <div className="flex items-center space-x-2">
         <button className="p-2 hover:bg-gray-800 rounded-full transition-colors">
           <MoreVertical size={20} />
@@ -108,143 +105,5 @@ export default function Navbar({ onMenuClick }) {
         </button>
       </div>
     </nav>
-  );
-}
-
-function YouTubeSidebar({ isCollapsed }) {
-  const mainNavItems = [
-    { icon: Home, label: "Home", active: true },
-    { icon: PlaySquare, label: "Shorts" },
-    { icon: User, label: "Subscriptions" },
-  ];
-
-  const youNavItems = [
-    { icon: User, label: "You" },
-    { icon: History, label: "History" },
-  ];
-
-  const exploreItems = [
-    { icon: TrendingUp, label: "Trending" },
-    { icon: Music, label: "Music" },
-    { icon: Radio, label: "Live" },
-    { icon: Gamepad2, label: "Gaming" },
-    { icon: Trophy, label: "Sports" },
-  ];
-
-  const moreFromYouTube = [
-    { icon: PlaySquare, label: "YouTube Premium", hasRedIcon: true },
-    { icon: Music, label: "YouTube Music", hasRedIcon: true },
-  ];
-
-  const NavItem = ({
-    icon: Icon,
-    label,
-    active = false,
-    hasRedIcon = false,
-  }) => (
-    <div
-      className={`flex items-center ${
-        isCollapsed ? "justify-center px-2" : "px-3"
-      } py-2 rounded-lg cursor-pointer transition-colors ${
-        active
-          ? "bg-neutral-800 text-white"
-          : "text-neutral-300 hover:bg-neutral-800 hover:text-white"
-      }`}
-    >
-      <div
-        className={`flex items-center ${
-          isCollapsed ? "flex-col space-y-1" : "min-w-0 flex-1"
-        }`}
-      >
-        {hasRedIcon ? (
-          <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-6">
-            <Icon size={14} className="text-white" />
-          </div>
-        ) : (
-          <Icon
-            size={20}
-            className={`${isCollapsed ? "mr-0" : "mr-6"} flex-shrink-0`}
-          />
-        )}
-        {!isCollapsed && (
-          <span className="text-sm font-normal truncate">{label}</span>
-        )}
-        {isCollapsed && (
-          <span className="text-xs font-normal text-center leading-none">
-            {label}
-          </span>
-        )}
-      </div>
-    </div>
-  );
-
-  const SectionTitle = ({ children }) =>
-    !isCollapsed && (
-      <h3 className="text-white text-base font-medium px-3 py-2">{children}</h3>
-    );
-
-  const Divider = () =>
-    !isCollapsed && <div className="border-t border-neutral-700 my-3"></div>;
-
-  const SignInPrompt = () =>
-    !isCollapsed && (
-      <div className="px-3 py-4">
-        <p className="text-neutral-300 text-sm mb-4 leading-relaxed">
-          Sign in to like videos, comment, and subscribe.
-        </p>
-        <button className="flex items-center px-3 py-1.5 border border-neutral-600 rounded-full text-blue-400 text-sm font-medium hover:bg-blue-400 hover:bg-opacity-10 transition-colors">
-          <UserPlus size={16} className="mr-2" />
-          Sign in
-        </button>
-      </div>
-    );
-
-  return (
-    <div
-      className={`${
-        isCollapsed ? "w-20" : "w-60"
-      } h-screen bg-neutral-900 text-neutral-300 overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-transparent transition-all duration-300`}
-    >
-      <div className="p-3">
-        {/* Main Navigation */}
-        <nav className={`${isCollapsed ? "space-y-2" : "space-y-1"}`}>
-          {mainNavItems.map((item, index) => (
-            <NavItem key={index} {...item} />
-          ))}
-        </nav>
-
-        <Divider />
-
-        {/* You Section */}
-        <SectionTitle>You</SectionTitle>
-        <nav className={`${isCollapsed ? "space-y-2" : "space-y-1"}`}>
-          {youNavItems.map((item, index) => (
-            <NavItem key={index} {...item} />
-          ))}
-        </nav>
-
-        <SignInPrompt />
-
-        <Divider />
-
-        {/* Explore Section */}
-        <SectionTitle>Explore</SectionTitle>
-        <nav className={`${isCollapsed ? "space-y-2" : "space-y-1"}`}>
-          {exploreItems.map((item, index) => (
-            <NavItem key={index} {...item} />
-          ))}
-        </nav>
-
-        <Divider />
-
-        {/* More from YouTube */}
-        <SectionTitle>More from YouTube</SectionTitle>
-        <nav className={`${isCollapsed ? "space-y-2" : "space-y-1"}`}>
-          {moreFromYouTube.map((item, index) => (
-            <NavItem key={index} {...item} />
-          ))}
-        </nav>
-      </div>
-    </div>
   );
 }
